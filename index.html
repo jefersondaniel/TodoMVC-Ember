@@ -4,8 +4,11 @@
         <meta charset="utf-8">
         <title>Ember.js • TodoMVC</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="bower_components/qunit/qunit/qunit.css">
     </head>
     <body>
+        <div id="qunit" style="display:none;"></div>
+        <div id="ember-testing"></div>
         <script type="text/x-handlebars" data-template-name="todos/index">
             <ul id="todo-list">
                 {{#each itemController="todo"}}
@@ -24,7 +27,7 @@
         <script type="text/x-handlebars" data-template-name="todos">
             <section id="todoapp">
                 <header id="header">
-                    <h1>todos</h1>
+                    <h1>tarefas</h1>
                     {{input type="text" id="new-todo" value=newTitle action="createTodo" placeholder="O que precisa ser feito?"}}
                 </header>
 
@@ -57,9 +60,11 @@
             </section>
 
             <footer id="info">
-                <p>Double-click to edit a todo</p>
+                <p>Clique duas vezes em uma tarefa para excluir</p>
+                <p><a href="?test">Clique aqui para realizar os testes</a></p>
             </footer>
         </script>
+        <script src="bower_components/qunit/qunit/qunit.js"></script>
         <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/handlebars/handlebars.js"></script>
         <script src="bower_components/ember/ember.js"></script>
@@ -70,5 +75,6 @@
         <script src="js/controllers/todos_controller.js"></script>
         <script src="js/controllers/todo_controller.js"></script>
         <script src="js/views/edit_todo_view.js"></script>
+        <script src="js/tests.js"></script><!-- To test go to /?test -->
     </body>
 </html>
