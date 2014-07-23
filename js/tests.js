@@ -1,7 +1,7 @@
 var isTest = location.href.indexOf('?test') >= 0;
 
 if (isTest) {
-	$('#qunit').show();
+    $('#qunit').show();
     Todos.setupForTesting();
     Todos.rootElement = '#ember-testing';
 
@@ -14,19 +14,19 @@ if (isTest) {
     Todos.injectTestHelpers();
 
 
-	module('Basic tests', {
-	  	setup: function() {
-	    	Ember.run(Todos, Todos.advanceReadiness);
-	  	},
-	  	teardown: function() {
-		    Todos.reset();
-	  	}
-	});
+    module('Basic tests', {
+          setup: function() {
+            Ember.run(Todos, Todos.advanceReadiness);
+          },
+          teardown: function() {
+            Todos.reset();
+          }
+    });
 
     test('Create a todo', function() {
-    	expect(1);
+        expect(1);
 
-		var todoTitle = 'Todo created with qunit';
+        var todoTitle = 'Todo created with qunit';
         createTestTodo(todoTitle);
 
         andThen(function(){
@@ -37,16 +37,16 @@ if (isTest) {
     test('Delete a todo', function() {
         expect(1);
 
-		var todoTitle = 'Todo created with qunit',
-			lastTodoDiv = null;
+        var todoTitle = 'Todo created with qunit',
+            lastTodoDiv = null;
         createTestTodo(todoTitle);
 
         visit("/");
-		lastTodoDiv = $('#todo-list li:last');
+        lastTodoDiv = find('#todo-list li:last');
         click('#todo-list li:last button.destroy');
 
         andThen(function() {
-        	equal(lastTodoDiv.is('visible'), false);
+            equal(lastTodoDiv.is('visible'), false);
         });
     });
 }
